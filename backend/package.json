@@ -1,0 +1,47 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon  ./src/index.ts",
+    "test": "ts-node ./test.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "pnpm": "pnpm add @types/node --save-dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/npm": "^7.19.3",
+    "@types/pdf-parse": "^1.1.4",
+    "@types/socket.io": "^3.0.2",
+    "@types/uuid": "^9.0.8",
+    "chromadb": "^1.10.4",
+    "chromadb-default-embed": "^2.13.2",
+    "cookie-session": "^2.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.5.0",
+    "groq-sdk": "^0.15.0",
+    "helmet": "^8.0.0",
+    "mammoth": "^1.9.0",
+    "mysql2": "^3.12.0",
+    "nodemon": "^3.0.3",
+    "openai": "^4.86.2",
+    "pdf-parse": "^1.1.1",
+    "socket.io": "^4.7.4",
+    "typescript": "^5.3.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.17",
+    "ts-node": "^10.9.2"
+  }
+}
