@@ -7,5 +7,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base: process.env.VITE_BASE_URL || '/SInet/frontend',
+  base: process.env.VITE_BASE_URL || '/',
 });
