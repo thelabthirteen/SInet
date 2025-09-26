@@ -16,8 +16,8 @@ mainRouter.use(express.urlencoded({ extended: true }));
 
 let PORT = process.env.PORT
 
-server.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`)
-})
+// server.listen(PORT, () => {
+//   console.log(`listening on port ${PORT}`)
+// })
 
 export default mainRouter
