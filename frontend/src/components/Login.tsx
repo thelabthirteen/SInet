@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
-import { BookOpen, Mail, Lock, User } from 'lucide-react';
+import React, { useState } from "react"
+import { BookOpen, Mail, Lock, User } from "lucide-react"
 
 interface LoginProps {
-  onLogin: (userData: any) => void;
+  onLogin: (userData: any) => void
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
     // Simulate authentication delay
     setTimeout(() => {
       // Mock user data based on email
       const userData = {
-        name: email.split('@')[0].replace(/\./g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+        name: email
+          .split("@")[0]
+          .replace(/\./g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase()),
         email,
-        studentId: 'A20EC0123',
-        program: email.includes('phd') ? 'PhD' : email.includes('masters') ? 'Masters' : email.includes('foundation') ? 'Foundation' : 'Bachelor\'s',
+        studentId: "A20EC0123",
+        program: email.includes("phd")
+          ? "PhD"
+          : email.includes("masters")
+          ? "Masters"
+          : email.includes("foundation")
+          ? "Foundation"
+          : "Bachelor's",
         year: 2,
-      };
-      
-      onLogin(userData);
-      setIsLoading(false);
-    }, 1000);
-  };
+      }
+
+      onLogin(userData)
+      setIsLoading(false)
+    }, 1000)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center px-4">
@@ -38,10 +47,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center mb-4 shadow-lg">
             <BookOpen className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">Welcome to SIC</h1>
-          <p className="text-gray-600 mt-2">Student Innovators Network - UTMKL</p>
+          <h1 className="text-3xl font-bold text-gray-900">Welcome to SINet</h1>
+          <p className="text-gray-600 mt-2">Student Innovators Network</p>
           <p className="text-sm text-blue-600 font-medium">
-            <a href="https://thelabthirteen.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-800 transition-colors duration-200">
+            <a
+              href="https://thelabthirteen.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-800 transition-colors duration-200"
+            >
               The Lab Thirteen
             </a>
           </p>
@@ -95,7 +109,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   <span>Signing in...</span>
                 </div>
               ) : (
-                'Sign In'
+                "Sign In"
               )}
             </button>
           </form>
@@ -104,21 +118,32 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
             <h3 className="font-medium text-blue-800 mb-2">Demo Access</h3>
             <p className="text-sm text-blue-700">
-              Use any UTMKL email format and any password to access the demo. 
-              Try emails like: john.doe@graduate.utm.my, student@undergraduate.utm.my, 
-              or phd.student@graduate.utm.my to see different program experiences.
+              Use any UTMKL email format and any password to access the demo.
+              Try emails like: john.doe@graduate.utm.my,
+              student@undergraduate.utm.my, or phd.student@graduate.utm.my to
+              see different program experiences.
             </p>
           </div>
         </div>
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-gray-500">
-          <p>© 2024 Student Innovators Network, UTMKL</p>
-          <p>Powered by <a href="https://thelabthirteen.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors duration-200">The Lab Thirteen</a></p>
+          <p>© 2024 Student Innovators Network</p>
+          <p>
+            Powered by{" "}
+            <a
+              href="https://thelabthirteen.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+            >
+              The Lab Thirteen
+            </a>
+          </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
