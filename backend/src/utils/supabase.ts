@@ -39,7 +39,7 @@ export async function GetSimilarChunks(userInput: string, keyword: string | null
     return "";
   }
 
-  console.log("Keywords = " + keywordArray);
+  
 
   let cachedKnowledgeChunk = ""; // To accumulate cached chunks
   let missingKeywords: string[] = []; // To store keywords without cache
@@ -56,7 +56,7 @@ export async function GetSimilarChunks(userInput: string, keyword: string | null
     }
   });
 
-  console.log("Missing keywords: ", missingKeywords);
+  
 
   // If there is cached content, return it immediately
   if (cachedKnowledgeChunk && missingKeywords.length == 0) {
@@ -71,7 +71,7 @@ export async function GetSimilarChunks(userInput: string, keyword: string | null
       .map(k => `type.ilike.%${k}%`)
       .join(", ");
 
-    console.log("OR Condition: ", orCondition);
+    
 
     // Query Supabase for the missing chunks
     const { data, error } = await CheckLatency(async () =>
@@ -90,8 +90,8 @@ export async function GetSimilarChunks(userInput: string, keyword: string | null
 
     // Join the retrieved chunks
     let chunks = data.map((row: { document: string }) => row.document).join("\n\n");
-    console.log("chunks")
-    console.dir(chunks)
+    
+    
 
     // Cache the newly fetched chunks for each missing keyword
     missingKeywords.forEach((key, index) => {
@@ -108,7 +108,7 @@ export async function GetSimilarChunks(userInput: string, keyword: string | null
 
 
 async function ChunkifyText(): Promise<string[]> {
-    console.log(process.env.CONTEXT_KNOWLEDGE_BASE_FILE);
+    
     const extractedText = await ExtractTextFromFile(process.env.CONTEXT_KNOWLEDGE_BASE_FILE || "");
     return extractedText.split(/\[CHUNK\]/).map(chunk => chunk.trim()).filter(chunk => chunk);
 }

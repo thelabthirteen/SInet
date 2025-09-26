@@ -7,7 +7,7 @@ import CheckLatency from "./latency";
 
 
 dotenv.config();
-console.log("GROQ_API_KEY: ", process.env.GROQ_API_KEY)
+
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 export async function GenerateResponse(userInput: string, extraContext: MessageI[]) {
@@ -17,14 +17,14 @@ export async function GenerateResponse(userInput: string, extraContext: MessageI
         content: msg.content
     }));
 
-    console.log("history: ", history)
+    
 
     const keyword = await CheckLatency(async () => await FindCorrectKeyword(userInput, history), "Find correct keyword");
 
     
     const similarContext = await GetSimilarChunks(userInput, keyword);
 
-    // console.log(history);
+    
 
     const userPrompt = `
         # Knowledge Base for SInet
@@ -70,7 +70,7 @@ export async function FindCorrectKeyword(userInput: string ,history: AIInputI[])
       })
     
       let verdict = response.choices[0].message.content
-    //   console.log("miuse / keywords: " + verdict)
+    
         
       return verdict
 }
@@ -95,7 +95,7 @@ export async function CheckIfUserMisuse(userInput: string){
 
   let verdict = response.choices[0].message.content
 
-//   console.log("GROQ MISUSE: " +  response.usage?.total_time)
+
 
   if (verdict === "STOP"){
     return true

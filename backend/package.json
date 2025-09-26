@@ -8,8 +8,7 @@
     "test": "ts-node ./test.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "pnpm": "pnpm i",
-    "vercel-build": "echo hello"
+    "pnpm": "pnpm i"
   },
   "keywords": [],
   "author": "",
